@@ -1,0 +1,32 @@
+#Tomcat 配置
+server:
+  port: 8082
+
+#Spring Boot Admin 监控配置
+spring:
+  boot:
+    admin:
+      routes:
+        endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,turbine.stream
+      url: http://localhost:8082
+      turbine:
+        clusters: default
+        url: http://localhost:8989/turbine.stream
+      client:
+        prefer-ip: true
+  mvc:
+    async:
+      request-timeout: -1
+
+#用于提供给监控的URI上下文设置（自身）
+management:
+  address: localhost
+  context-path: /admin
+
+#程序的自描述信息
+info:
+  application:
+    name: 微服务监控中心
+    version: 1.0-SNAPSHOT
+    owner: devdoc.org
+    author: GeHao

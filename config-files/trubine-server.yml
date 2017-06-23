@@ -1,0 +1,44 @@
+#Tomcat 配置
+server:
+  port: 8989
+
+#Eureka 服务注册与发现
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8083/eureka/
+
+#监控信息集群采集
+turbine:
+  appConfig: app-server
+  instanceUrlSuffix: admin/hystrix.stream
+  clusterNameExpression: new String("default")
+
+#Spring Boot Admin 监控配置
+spring:
+  boot:
+    admin:
+      url: http://localhost:8082
+      client:
+        prefer-ip: true
+  mvc:
+    async:
+      request-timeout: -1
+
+#为监控提供的URI路径
+management:
+  address: localhost
+  port: 8990
+  context-path: /admin
+
+#程序描述信息
+info:
+  application:
+    name: Turbine监控
+    version: 1.0-SNAPSHOT
+    owner: devdoc.org
+    author: GeHao

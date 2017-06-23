@@ -1,0 +1,23 @@
+server:
+  port: 8080
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/KunWangRui/springcloud.git
+          search-paths: config-server
+  boot:
+    admin:
+      url:localhost:8082
+      client:
+        prefer-ip: true
+  mvc:
+    async:
+      request-timeout: -1
+
+management:
+  address: localhost
+  context-path: /admin
+
+
